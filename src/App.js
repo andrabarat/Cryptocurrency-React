@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Layout } from "antd";
+import { Row, Col } from "antd";
+import Home from "./home/home";
+
+import "./App.css";
+
+const { Header, Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <Layout className="layout">
+      <Header>
+        <a href="/home" className="app-title">
+          <span>Cryptocurrency</span>
         </a>
-      </header>
-    </div>
+      </Header>
+      <Content className="content">
+        <Row>
+          <Col xs={{ span: 24, offset: 0 }} lg={{ span: 18, offset: 3 }}>
+            <Home />
+          </Col>
+        </Row>
+      </Content>
+    </Layout>
   );
 }
 
