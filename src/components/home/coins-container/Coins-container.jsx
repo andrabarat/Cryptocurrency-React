@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Col, Row } from "antd";
 import CoinCard from "../coin-card/Coin-card";
 
@@ -12,7 +13,9 @@ class CoinsContainers extends React.Component {
   render() {
     const coinsList = this.state.coins.map((coin) => (
       <Col span={8} key={coin.id}>
-        <CoinCard coin={coin} />
+        <Link to={"/coin/" + coin.id}>
+          <CoinCard coin={coin} />
+        </Link>
       </Col>
     ));
     return (

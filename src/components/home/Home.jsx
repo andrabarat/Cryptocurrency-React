@@ -16,7 +16,6 @@ class Home extends React.Component {
     fetch("https://localhost:44302/api/coins")
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         this.setState({
           items: json,
           DataisLoaded: true,
