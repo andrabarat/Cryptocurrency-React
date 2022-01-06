@@ -2,7 +2,7 @@ import { Layout } from "antd";
 import { Row, Col } from "antd";
 import Home from "./components/home/Home";
 
-import "./App.css";
+import "./App.scss";
 
 const { Header, Content } = Layout;
 

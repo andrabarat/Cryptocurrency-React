@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 
-import "./Coin-card.css";
+import "./Coin-card.scss";
 
 class CoinCard extends React.Component {
   state = {

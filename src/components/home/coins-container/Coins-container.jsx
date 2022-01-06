@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "antd";
 import CoinCard from "../coin-card/Coin-card";
 
-import "./Coins-container.css";
+import "./Coins-container.scss";
 
 class CoinsContainers extends React.Component {
   state = {

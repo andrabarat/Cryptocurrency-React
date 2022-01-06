@@ -1,16 +1,18 @@
 @import "~antd/dist/antd.css";
+@import "styles/main.scss";
 
 .app-title {
   font-size: 14px;
   font-weight: bold;
-  color: white;
+  color: $white;
   margin-left: 10px;
   transition: 0.3s ease;
-}
-.app-title:hover {
-  text-transform: none;
-  color: white;
-  box-shadow: inset 0 -1px 0 white;
+
+  &:hover {
+    text-transform: none;
+    color: $white;
+    box-shadow: inset 0 -1px 0 $white;
+  }
 }
 
 .ant-layout.layout {
