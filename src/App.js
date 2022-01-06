@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import { Row, Col } from "antd";
-import Home from "./home/home";
+import Home from "./components/home/Home";
 
 import "./App.css";
 

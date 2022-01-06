@@ -1,6 +1,6 @@
 import React from "react";
 import { Skeleton } from "antd";
-import Containers from "./coins-container/coins-container";
+import CoinsContainers from "./coins-container/Coins-container";
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class Home extends React.Component {
     const { DataisLoaded, items } = this.state;
     if (!DataisLoaded) return <Skeleton active />;
 
-    return <Containers coins={items} />;
+    return <CoinsContainers coins={items} />;
   }
 }
 
