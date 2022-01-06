@@ -1,6 +1,9 @@
 import { Layout } from "antd";
 import { Row, Col } from "antd";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import Home from "./components/home/Home";
+import Coin from "./components/coin/Coin";
 
 import "./App.scss";
 
@@ -17,7 +20,13 @@ function App() {
       <Content className="content">
         <Row>
           <Col xs={{ span: 24, offset: 0 }} lg={{ span: 18, offset: 3 }}>
-            <Home />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Navigate to="home" />} />
+                <Route path="home" element={<Home />} />
+                <Route path="coin/:coin" element={<Coin />} />
+              </Routes>
+            </BrowserRouter>
           </Col>
         </Row>
       </Content>
