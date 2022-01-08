@@ -24,7 +24,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Navigate to="home" />} />
                 <Route path="home" element={<Home />} />
-                <Route path="coin/:coin" element={<Coin />} />
+                <Route path="coin/:symbol" element={<Coin />} />
               </Routes>
             </BrowserRouter>
           </Col>

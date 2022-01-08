@@ -3,19 +3,14 @@ import { Skeleton, Result } from "antd";
 import CoinsContainers from "./coins-container/Coins-container";
 
 function Home() {
-  let { coins } = [];
-
-  const [
-    state = {
-      coins: [],
-      areFetched: false,
-      isError: false,
-    },
-    setState,
-  ] = useState([]);
+  const [state, setState] = useState({
+    coins: [],
+    areFetched: false,
+    isError: false,
+  });
 
   useEffect(() => {
-    fetch("https://localhost:5001/api/coins")
+    fetch("https://localhost:44302/api/coins")
       .then((res) => res.json())
       .then((json) => {
         setState({
@@ -30,7 +25,7 @@ function Home() {
           isError: true,
         });
       });
-  }, [coins]);
+  }, []);
 
   if (!state.areFetched) return <Skeleton active />;
   if (state.isError)
@@ -38,7 +33,7 @@ function Home() {
       <Result
         status="404"
         title="There seems to be some problems!"
-        subTitle="SSorry, please try again later."
+        subTitle="Sorry, please try again later."
       />
     );
 

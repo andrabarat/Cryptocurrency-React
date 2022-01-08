@@ -13,7 +13,7 @@ class CoinsContainers extends React.Component {
   render() {
     const coinsList = this.state.coins.map((coin) => (
       <Col span={8} key={coin.id}>
-        <Link to={"/coin/" + coin.id}>
+        <Link to={"/coin/" + coin.symbol}>
           <CoinCard coin={coin} />
         </Link>
       </Col>
