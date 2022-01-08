@@ -16,7 +16,7 @@ function Coin() {
   ] = useState([]);
 
   useEffect(() => {
-    fetch("https://localhost:7001/api/coins/" + coin)
+    fetch("https://localhost:5001/api/coins/" + coin)
       .then((res) => res.json())
       .then((json) => {
         setState({
