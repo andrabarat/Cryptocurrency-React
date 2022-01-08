@@ -13,7 +13,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://cryptocurrencyapi.azurewebsites.net/api/coins")
+    fetch("https://localhost:5001/api/coins")
       .then((res) => res.json())
       .then((json) => {
         this.setState({

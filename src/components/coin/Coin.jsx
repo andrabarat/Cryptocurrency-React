@@ -15,7 +15,7 @@ function Coin() {
   ] = useState([]);
 
   useEffect(() => {
-    fetch("https://cryptocurrencyapi.azurewebsites.net/api/coins/" + coin)
+    fetch("https://localhost:5001/api/coins/" + coin)
       .then((res) => res.json())
       .then((json) => {
         setState({
