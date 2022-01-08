@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Skeleton } from "antd";
+import { Skeleton, Result } from "antd";
 import CoinModel from "../models/CoinModel";
 
 function Coin() {
@@ -9,23 +9,39 @@ function Coin() {
   const [
     state = {
       coin: CoinModel,
-      DataisLoaded: false,
+      areFetched: false,
+      isError: true,
     },
     setState,
   ] = useState([]);
 
   useEffect(() => {
-    fetch("https://localhost:5001/api/coins/" + coin)
+    fetch("https://localhost:7001/api/coins/" + coin)
       .then((res) => res.json())
       .then((json) => {
         setState({
           coin: json,
-          DataisLoaded: true,
+          areFetched: true,
+          isError: false,
+        });
+      })
+      .catch(() => {
+        setState({
+          areFetched: true,
+          isError: true,
         });
       });
   }, [coin]);
 
-  if (!state.DataisLoaded) return <Skeleton active />;
+  if (!state.areFetched) return <Skeleton active />;
+  if (state.isError)
+    return (
+      <Result
+        status="404"
+        title="There seems to be some problems!"
+        subTitle="SSorry, please try again later."
+      />
+    );
 
   return (
     <div>

@@ -1,34 +1,48 @@
-import React from "react";
-import { Skeleton } from "antd";
+import React, { useState, useEffect } from "react";
+import { Skeleton, Result } from "antd";
 import CoinsContainers from "./coins-container/Coins-container";
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
+function Home() {
+  let { coins } = [];
 
-    this.state = {
-      items: [],
-      DataisLoaded: false,
-    };
-  }
+  const [
+    state = {
+      coins: [],
+      areFetched: false,
+      isError: false,
+    },
+    setState,
+  ] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     fetch("https://localhost:5001/api/coins")
       .then((res) => res.json())
       .then((json) => {
-        this.setState({
-          items: json,
-          DataisLoaded: true,
+        setState({
+          coins: json,
+          areFetched: true,
+          isError: false,
+        });
+      })
+      .catch(() => {
+        setState({
+          areFetched: true,
+          isError: true,
         });
       });
-  }
+  }, [coins]);
 
-  render() {
-    const { DataisLoaded, items } = this.state;
-    if (!DataisLoaded) return <Skeleton active />;
+  if (!state.areFetched) return <Skeleton active />;
+  if (state.isError)
+    return (
+      <Result
+        status="404"
+        title="There seems to be some problems!"
+        subTitle="SSorry, please try again later."
+      />
+    );
 
-    return <CoinsContainers coins={items} />;
-  }
+  return <CoinsContainers coins={state.coins} />;
 }
 
 export default Home;
