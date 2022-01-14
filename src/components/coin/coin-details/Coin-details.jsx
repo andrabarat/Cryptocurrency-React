@@ -146,9 +146,7 @@ function CoinDetails(props) {
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].marketCap}
-                perviousValue={
-                  props.coinDetails.coins[index + 1].marketCap
-                }
+                perviousValue={props.coinDetails.coins[index + 1].marketCap}
               ></ComparableIcon>
             ) : (
               <></>
@@ -184,6 +182,7 @@ function CoinDetails(props) {
         dataSource={props.coinDetails.coins}
         pagination={false}
         rowKey="id"
+        bordered
       />
     </>
   );

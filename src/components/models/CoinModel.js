@@ -9,7 +9,8 @@ export default class CoinModel {
     open,
     close,
     volume,
-    marketCap
+    marketCap,
+    status
   ) {
     this.id = id;
     this.name = name;
@@ -21,5 +22,6 @@ export default class CoinModel {
     this.close = close;
     this.volume = volume;
     this.marketCap = marketCap;
+    this.status = status;
   }
 }
