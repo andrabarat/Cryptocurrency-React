@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Skeleton, Result, Table } from "antd";
 import moment from "moment";
 import ComparableIcon from "../comparable-icon/Comparable-icon";
 
 import "./Coin-details.scss";
 
-function CoinDetails() {
-  const [state, setState] = useState({
-    coins: [],
-    areFetched: false,
-    isError: true,
-  });
-
+function CoinDetails(props) {
   const formatNumberSeparator = (text) => {
     const numberArray = text.split(".");
     const beforeComma = numberArray[0].replace(
@@ -35,14 +29,14 @@ function CoinDetails() {
       key: "high",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < state.coins.length - 1;
+        const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
             <span className="space-between">{formatNumberSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={state.coins[index].high}
-                perviousValue={state.coins[index + 1].high}
+                value={props.coinDetails.coins[index].high}
+                perviousValue={props.coinDetails.coins[index + 1].high}
               ></ComparableIcon>
             ) : (
               <></>
@@ -57,14 +51,14 @@ function CoinDetails() {
       key: "low",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < state.coins.length - 1;
+        const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
             <span className="space-between">{formatNumberSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={state.coins[index].low}
-                perviousValue={state.coins[index + 1].low}
+                value={props.coinDetails.coins[index].low}
+                perviousValue={props.coinDetails.coins[index + 1].low}
               ></ComparableIcon>
             ) : (
               <></>
@@ -79,14 +73,14 @@ function CoinDetails() {
       key: "open",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < state.coins.length - 1;
+        const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
             <span className="space-between">{formatNumberSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={state.coins[index].open}
-                perviousValue={state.coins[index + 1].open}
+                value={props.coinDetails.coins[index].open}
+                perviousValue={props.coinDetails.coins[index + 1].open}
               ></ComparableIcon>
             ) : (
               <></>
@@ -101,14 +95,14 @@ function CoinDetails() {
       key: "close",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < state.coins.length - 1;
+        const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
             <span className="space-between">{formatNumberSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={state.coins[index].close}
-                perviousValue={state.coins[index + 1].close}
+                value={props.coinDetails.coins[index].close}
+                perviousValue={props.coinDetails.coins[index + 1].close}
               ></ComparableIcon>
             ) : (
               <></>
@@ -123,14 +117,14 @@ function CoinDetails() {
       key: "volume",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < state.coins.length - 1;
+        const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
             <span className="space-between">{formatNumberSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={state.coins[index].volume}
-                perviousValue={state.coins[index + 1].volume}
+                value={props.coinDetails.coins[index].volume}
+                perviousValue={props.coinDetails.coins[index + 1].volume}
               ></ComparableIcon>
             ) : (
               <></>
@@ -145,14 +139,16 @@ function CoinDetails() {
       key: "marketCap",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < state.coins.length - 1;
+        const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
             <span className="space-between">{formatNumberSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={state.coins[index].marketCap}
-                perviousValue={state.coins[index + 1].marketCap}
+                value={props.coinDetails.coins[index].marketCap}
+                perviousValue={
+                  props.coinDetails.coins[index + 1].marketCap
+                }
               ></ComparableIcon>
             ) : (
               <></>
@@ -163,37 +159,14 @@ function CoinDetails() {
     },
   ];
 
-  const getCoins = (symbol) => {
-    fetch("https://localhost:44302/api/coins/" + symbol)
-      .then((res) => {
-        if (!res.ok) {
-          throw res;
-        }
-        return res.json();
-      })
-      .then((json) => {
-        setState({
-          coins: json,
-          areFetched: true,
-          isError: false,
-        });
-      })
-      .catch(() => {
-        setState({
-          areFetched: true,
-          isError: true,
-        });
-      });
-  };
-
-  if (!state.areFetched)
+  if (!props.coinDetails.areFetched)
     return (
       <>
         <Skeleton active />
       </>
     );
 
-  if (state.isError)
+  if (props.coinDetails.isError)
     return (
       <>
         <Result
@@ -208,7 +181,7 @@ function CoinDetails() {
     <>
       <Table
         columns={columns}
-        dataSource={state.coins}
+        dataSource={props.coinDetails.coins}
         pagination={false}
         rowKey="id"
       />
