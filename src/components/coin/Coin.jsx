@@ -6,7 +6,7 @@ import "./Coin.scss";
 
 const { TabPane } = Tabs;
 
-const Coin = () => {
+function Coin() {
   let { symbol } = useParams();
 
   const [state, setState] = useState({
@@ -70,6 +70,6 @@ const Coin = () => {
       </Tabs>
     </>
   );
-};
+}
 
 export default Coin;

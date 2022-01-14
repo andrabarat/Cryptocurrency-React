@@ -3,17 +3,12 @@ import { Card } from "antd";
 
 import "./Coin-card.scss";
 
-class CoinCard extends React.Component {
-  state = {
-    coin: this.props.coin,
-  };
-  render() {
-    return (
-      <Card className="coin" title={this.state.coin.symbol}>
-        <p>{this.state.coin.name}</p>
-      </Card>
-    );
-  }
+function CoinCard(props) {
+  return (
+    <Card className="coin" title={props.coin.symbol}>
+      <p>{props.coin.name}</p>
+    </Card>
+  );
 }
 
 export default CoinCard;
