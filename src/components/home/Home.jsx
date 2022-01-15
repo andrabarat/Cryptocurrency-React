@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Skeleton, Result } from "antd";
+import { Status } from "../models/StatusEnum";
 import CoinsContainers from "./coins-container/Coins-container";
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
     fetch("https://localhost:44302/api/coins")
       .then((res) => res.json())
       .then((json) => {
+        fillStatus(json);
         setState({
           coins: json,
           areFetched: true,
@@ -26,6 +28,25 @@ function Home() {
         });
       });
   }, []);
+
+  function fillStatus(coins) {
+    coins.forEach((coin) => {
+      coin.currentCoin.status = getStatus(coin.currentCoin, coin.previousCoin);
+    });
+  }
+
+  function getStatus(currentCoin, previousCoin) {
+    if (currentCoin.high > previousCoin.high) {
+      return Status.Increased;
+    }
+    if (currentCoin.high === previousCoin.high) {
+      return Status.Stalled;
+    }
+    if (currentCoin.high < previousCoin.high) {
+      return Status.Decreased;
+    }
+    return Status.None;
+  }
 
   if (!state.areFetched) return <Skeleton active />;
   if (state.isError)

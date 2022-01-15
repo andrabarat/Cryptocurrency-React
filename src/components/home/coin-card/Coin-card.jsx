@@ -5,8 +5,8 @@ import "./Coin-card.scss";
 
 function CoinCard(props) {
   return (
-    <Card className="coin" title={props.coin.symbol}>
-      <p>{props.coin.name}</p>
+    <Card className="coin" title={props.comparableCoin.currentCoin.symbol}>
+      <p>{props.comparableCoin.currentCoin.name}</p>
     </Card>
   );
 }
