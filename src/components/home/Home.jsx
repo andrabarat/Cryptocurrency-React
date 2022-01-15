@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Skeleton, Result } from "antd";
-import { Status } from "../models/StatusEnum";
+import { Status } from "../shared/models/StatusEnum";
 import CoinsContainers from "./coins-container/Coins-container";
 
 function Home() {

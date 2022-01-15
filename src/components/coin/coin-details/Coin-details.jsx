@@ -2,19 +2,11 @@ import React from "react";
 import { Skeleton, Result, Table } from "antd";
 import moment from "moment";
 import ComparableIcon from "../comparable-icon/Comparable-icon";
+import numberWithSeparator from "../../shared/js/utils";
 
 import "./Coin-details.scss";
 
 function CoinDetails(props) {
-  const formatNumberSeparator = (text) => {
-    const numberArray = text.split(".");
-    const beforeComma = numberArray[0].replace(
-      /(\d)(?=(\d{3})+(?!\d))/g,
-      "$1,"
-    );
-    return beforeComma + "." + numberArray[1];
-  };
-
   const columns = [
     {
       title: "Date",
@@ -32,7 +24,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{formatNumberSeparator(text)}</span>
+            <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].high}
@@ -54,7 +46,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{formatNumberSeparator(text)}</span>
+            <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].low}
@@ -76,7 +68,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{formatNumberSeparator(text)}</span>
+            <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].open}
@@ -98,7 +90,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{formatNumberSeparator(text)}</span>
+            <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].close}
@@ -120,7 +112,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{formatNumberSeparator(text)}</span>
+            <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].volume}
@@ -142,7 +134,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{formatNumberSeparator(text)}</span>
+            <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].marketCap}

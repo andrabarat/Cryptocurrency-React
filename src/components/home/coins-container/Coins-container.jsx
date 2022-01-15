@@ -6,10 +6,10 @@ import CoinCard from "../coin-card/Coin-card";
 import "./Coins-container.scss";
 
 function CoinsContainers(props) {
-  const coinsList = props.coins.map((comparableCoin) => (
-    <Col span={8} key={comparableCoin.currentCoin.id}>
-      <Link to={"/coin/" + comparableCoin.currentCoin.symbol}>
-        <CoinCard comparableCoin={comparableCoin} />
+  const coinsList = props.coins.map((comparableCoins) => (
+    <Col span={8} key={comparableCoins.currentCoin.id}>
+      <Link to={"/coin/" + comparableCoins.currentCoin.symbol}>
+        <CoinCard comparableCoins={comparableCoins} />
       </Link>
     </Col>
   ));
