@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Row, Col, Divider, Tabs } from "antd";
+import { Row, Col, Divider, Tabs, Skeleton, Result } from "antd";
+
 import CoinDetails from "./coin-details/Coin-details";
+
 import "./Coin.scss";
 
 const { TabPane } = Tabs;
@@ -17,14 +19,7 @@ function Coin() {
     },
   });
 
-  const tabClicked = (key) => {
-    if (key === "details") {
-      console.log("child get coins");
-      getCoins(symbol);
-    }
-  };
-
-  const getCoins = (symbol) => {
+  useEffect(() => {
     fetch("https://localhost:44302/api/coins/" + symbol)
       .then((res) => {
         if (!res.ok) {
@@ -50,9 +45,9 @@ function Coin() {
           },
         });
       });
-  };
+  }, []);
 
-  return (
+  const layout = (
     <>
       <Row align="middle" justify="space-around">
         <Col>
@@ -60,7 +55,33 @@ function Coin() {
         </Col>
       </Row>
       <Divider />
-      <Tabs size="large" centered type="card" onTabClick={tabClicked}>
+    </>
+  );
+
+  if (!state.coinDetails.areFetched)
+    return (
+      <>
+        {layout}
+        <Skeleton active />
+      </>
+    );
+
+  if (state.coinDetails.isError)
+    return (
+      <>
+        {layout}
+        <Result
+          status="404"
+          title="There seems to be some problems!"
+          subTitle="Sorry, please try again later."
+        />
+      </>
+    );
+
+  return (
+    <>
+      {layout}
+      <Tabs size="large" centered type="card">
         <TabPane tab="Stats" key="stats">
           Coin stats
         </TabPane>

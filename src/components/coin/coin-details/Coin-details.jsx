@@ -1,5 +1,5 @@
 import React from "react";
-import { Skeleton, Result, Table } from "antd";
+import { Table } from "antd";
 import moment from "moment";
 import ComparableIcon from "../comparable-icon/Comparable-icon";
 import numberWithSeparator from "../../shared/js/utils";
@@ -148,24 +148,6 @@ function CoinDetails(props) {
       },
     },
   ];
-
-  if (!props.coinDetails.areFetched)
-    return (
-      <>
-        <Skeleton active />
-      </>
-    );
-
-  if (props.coinDetails.isError)
-    return (
-      <>
-        <Result
-          status="404"
-          title="There seems to be some problems!"
-          subTitle="Sorry, please try again later."
-        />
-      </>
-    );
 
   return (
     <>
