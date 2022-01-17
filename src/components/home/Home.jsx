@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Skeleton, Result } from "antd";
+import { Skeleton, Result, Row, Col, Divider } from "antd";
 import { Status } from "../shared/models/StatusEnum";
 import CoinsContainers from "./coins-container/Coins-container";
 
@@ -48,17 +48,43 @@ function Home() {
     return Status.None;
   }
 
-  if (!state.areFetched) return <Skeleton active />;
+  const layout = (
+    <>
+      <Row align="middle" justify="space-around">
+        <Col>
+          <h1 className="title">Coins</h1>
+        </Col>
+      </Row>
+      <Divider />
+      <br />
+    </>
+  );
+
+  if (!state.areFetched)
+    return (
+      <>
+        {layout}
+        <Skeleton active />
+      </>
+    );
   if (state.isError)
     return (
-      <Result
-        status="404"
-        title="There seems to be some problems!"
-        subTitle="Sorry, please try again later."
-      />
+      <>
+        {layout}
+        <Result
+          status="404"
+          title="There seems to be some problems!"
+          subTitle="Sorry, please try again later."
+        />
+      </>
     );
 
-  return <CoinsContainers coins={state.coins} />;
+  return (
+    <>
+      {layout}
+      <CoinsContainers coins={state.coins} />
+    </>
+  );
 }
 
 export default Home;

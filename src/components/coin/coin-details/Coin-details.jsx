@@ -24,7 +24,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{numberWithSeparator(text)}</span>
+            <span className="space-between">$ {numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].high}
@@ -46,7 +46,7 @@ function CoinDetails(props) {
         const isInRange = index < props.coinDetails.coins.length - 1;
         return (
           <>
-            <span className="space-between">{numberWithSeparator(text)}</span>
+            <span className="space-between">$ {numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
                 value={props.coinDetails.coins[index].low}
