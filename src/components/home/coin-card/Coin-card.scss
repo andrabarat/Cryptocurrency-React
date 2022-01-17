@@ -1,14 +1,64 @@
 .coin {
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 5px;
+
   transition: 0.3s ease;
 
   &:hover {
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  &.decreased {
+    background-color: rgba(192, 57, 43, 0.2);
+    border-color: #c0392b;
+
+    &:hover {
+      box-shadow: rgba(192, 57, 43, 0.35) 0px 5px 15px;
+    }
+
+    .coin-title {
+      border-color: #c0392b;
+    }
+  }
+
+  &.increased {
+    background-color: rgba(39, 174, 96, 0.2);
+    border-color: #27ae60;
+
+    &:hover {
+      box-shadow: rgba(39, 174, 96, 0.35) 0px 5px 15px;
+    }
+    .coin-title {
+      border-color: #27ae60;
+    }
   }
 
   .coin-title,
   .coin-body {
     display: flex;
     justify-content: space-between;
+  }
+
+  .coin-title {
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+
+    .name {
+      font-size: 18px;
+    }
+
+    .value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+
+  .coin-body {
+    padding-top: 20px;
+
+    .symbol {
+      font-size: 16px;
+    }
   }
 }

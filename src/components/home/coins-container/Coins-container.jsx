@@ -15,7 +15,7 @@ function CoinsContainers(props) {
   ));
   return (
     <div className="coins">
-      <Row gutter={[16, 16]}>{coinsList}</Row>
+      <Row gutter={[32, 32]}>{coinsList}</Row>
     </div>
   );
 }

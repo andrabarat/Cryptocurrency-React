@@ -3,6 +3,8 @@ import { Skeleton, Result, Row, Col, Divider } from "antd";
 import { Status } from "../shared/models/StatusEnum";
 import CoinsContainers from "./coins-container/Coins-container";
 
+import "./Home.scss";
+
 function Home() {
   const [state, setState] = useState({
     coins: [],

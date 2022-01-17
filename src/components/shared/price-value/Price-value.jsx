@@ -4,6 +4,8 @@ import { UpOutlined, RightOutlined, DownOutlined } from "@ant-design/icons";
 
 import { Status } from "../models/StatusEnum";
 
+import "./Price-value.scss";
+
 function PriceValue(props) {
   const value = () => {
     const number =
@@ -18,25 +20,25 @@ function PriceValue(props) {
     switch (coin.status) {
       case Status.Increased: {
         return (
-          <Tag color="#27ae60">
+          <Tag color="#27ae60" className="tag">
             <UpOutlined />
-            <span>{value()} %</span>
+            <span className="value">{value()} %</span>
           </Tag>
         );
       }
       case Status.Stall: {
         return (
-          <Tag color="#2c3e50">
+          <Tag color="#2c3e50" className="tag">
             <RightOutlined />
-            <span>{value()} %</span>
+            <span className="value">{value()} %</span>
           </Tag>
         );
       }
       case Status.Decreased: {
         return (
-          <Tag color="#c0392b">
+          <Tag color="#c0392b" className="tag">
             <DownOutlined />
-            <span>{value()} %</span>
+            <span className="value">{value()} %</span>
           </Tag>
         );
       }
