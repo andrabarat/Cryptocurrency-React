@@ -21,14 +21,14 @@ function CoinDetails(props) {
       key: "high",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < props.coinDetails.coins.length - 1;
+        const isInRange = index < props.coins.length - 1;
         return (
           <>
             <span className="space-between">$ {numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={props.coinDetails.coins[index].high}
-                perviousValue={props.coinDetails.coins[index + 1].high}
+                value={props.coins[index].high}
+                perviousValue={props.coins[index + 1].high}
               ></ComparableIcon>
             ) : (
               <></>
@@ -43,14 +43,14 @@ function CoinDetails(props) {
       key: "low",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < props.coinDetails.coins.length - 1;
+        const isInRange = index < props.coins.length - 1;
         return (
           <>
             <span className="space-between">$ {numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={props.coinDetails.coins[index].low}
-                perviousValue={props.coinDetails.coins[index + 1].low}
+                value={props.coins[index].low}
+                perviousValue={props.coins[index + 1].low}
               ></ComparableIcon>
             ) : (
               <></>
@@ -65,14 +65,14 @@ function CoinDetails(props) {
       key: "open",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < props.coinDetails.coins.length - 1;
+        const isInRange = index < props.coins.length - 1;
         return (
           <>
             <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={props.coinDetails.coins[index].open}
-                perviousValue={props.coinDetails.coins[index + 1].open}
+                value={props.coins[index].open}
+                perviousValue={props.coins[index + 1].open}
               ></ComparableIcon>
             ) : (
               <></>
@@ -87,14 +87,14 @@ function CoinDetails(props) {
       key: "close",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < props.coinDetails.coins.length - 1;
+        const isInRange = index < props.coins.length - 1;
         return (
           <>
             <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={props.coinDetails.coins[index].close}
-                perviousValue={props.coinDetails.coins[index + 1].close}
+                value={props.coins[index].close}
+                perviousValue={props.coins[index + 1].close}
               ></ComparableIcon>
             ) : (
               <></>
@@ -109,14 +109,14 @@ function CoinDetails(props) {
       key: "volume",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < props.coinDetails.coins.length - 1;
+        const isInRange = index < props.coins.length - 1;
         return (
           <>
             <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={props.coinDetails.coins[index].volume}
-                perviousValue={props.coinDetails.coins[index + 1].volume}
+                value={props.coins[index].volume}
+                perviousValue={props.coins[index + 1].volume}
               ></ComparableIcon>
             ) : (
               <></>
@@ -131,14 +131,14 @@ function CoinDetails(props) {
       key: "marketCap",
       align: "right",
       render: (text, record, index) => {
-        const isInRange = index < props.coinDetails.coins.length - 1;
+        const isInRange = index < props.coins.length - 1;
         return (
           <>
             <span className="space-between">{numberWithSeparator(text)}</span>
             {isInRange ? (
               <ComparableIcon
-                value={props.coinDetails.coins[index].marketCap}
-                perviousValue={props.coinDetails.coins[index + 1].marketCap}
+                value={props.coins[index].marketCap}
+                perviousValue={props.coins[index + 1].marketCap}
               ></ComparableIcon>
             ) : (
               <></>
@@ -153,8 +153,7 @@ function CoinDetails(props) {
     <>
       <Table
         columns={columns}
-        dataSource={props.coinDetails.coins}
-        pagination={false}
+        dataSource={props.coins}
         rowKey="id"
         bordered
       />

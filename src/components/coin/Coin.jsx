@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Row, Col, Divider, Tabs, Skeleton, Result } from "antd";
 
 import CoinDetails from "./coin-details/Coin-details";
+import CoinStats from "./coin-stats/Coin-stats";
 
 import "./Coin.scss";
 
@@ -12,11 +13,9 @@ function Coin() {
   let { symbol } = useParams();
 
   const [state, setState] = useState({
-    coinDetails: {
-      coins: [],
-      areFetched: false,
-      isError: true,
-    },
+    coins: [],
+    areFetched: false,
+    isError: true,
   });
 
   useEffect(() => {
@@ -29,20 +28,16 @@ function Coin() {
       })
       .then((json) => {
         setState({
-          coinDetails: {
-            coins: json,
-            areFetched: true,
-            isError: false,
-          },
+          coins: json,
+          areFetched: true,
+          isError: false,
         });
       })
       .catch(() => {
         setState({
-          coinDetails: {
-            coins: [],
-            areFetched: true,
-            isError: true,
-          },
+          coins: [],
+          areFetched: true,
+          isError: true,
         });
       });
   }, []);
@@ -58,7 +53,7 @@ function Coin() {
     </>
   );
 
-  if (!state.coinDetails.areFetched)
+  if (!state.areFetched)
     return (
       <>
         {layout}
@@ -66,7 +61,7 @@ function Coin() {
       </>
     );
 
-  if (state.coinDetails.isError)
+  if (state.isError)
     return (
       <>
         {layout}
@@ -83,10 +78,10 @@ function Coin() {
       {layout}
       <Tabs size="large" centered type="card">
         <TabPane tab="Stats" key="stats">
-          Coin stats
+          <CoinStats coins={state.coins} />
         </TabPane>
         <TabPane tab="Details" key="details">
-          <CoinDetails coinDetails={state.coinDetails} />
+          <CoinDetails coins={state.coins} />
         </TabPane>
       </Tabs>
     </>
