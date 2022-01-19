@@ -7,7 +7,7 @@ import "./Coins-container.scss";
 
 function CoinsContainers(props) {
   const coinsList = props.coins.map((comparableCoins) => (
-    <Col span={8} key={comparableCoins.currentCoin.id}>
+    <Col xs={24} md={12} lg={12} xl={8} key={comparableCoins.currentCoin.id}>
       <Link to={"/coin/" + comparableCoins.currentCoin.symbol}>
         <CoinCard comparableCoins={comparableCoins} />
       </Link>
